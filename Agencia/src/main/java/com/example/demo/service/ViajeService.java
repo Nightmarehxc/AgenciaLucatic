@@ -17,19 +17,23 @@ public class ViajeService {
 	private RestTemplate restTemplate;
 
 	public String urlMicroProductorVuelos = "http://agencia-micro-vuelos/vuelos";
-	public String urlMicroProductorHoteles = "http://agencia-micro-hoteles";
+	public String urlMicroProductorHoteles = "http://agencia-micro-hoteles/api";
 
-	public Hoteles[] getHoteles() {
-		Hoteles[] hoteles = restTemplate.getForObject(urlMicroProductorHoteles + "/api/hoteles", Hoteles[].class);
-		return hoteles;
+	public List<Hoteles> getHoteles() {
+		Hoteles[] hoteles = restTemplate.getForObject(urlMicroProductorHoteles + "/hoteles", Hoteles[].class);
+		return Arrays.asList(hoteles);
 	}
 	
+	public Hoteles createHotel(Hoteles hotel) {
+		return restTemplate.postForObject(urlMicroProductorHoteles + "/hoteles", hotel, Hoteles.class);
+	}
+
 	// VUELOS
 	public List<Vuelos> getVuelos() {
 		Vuelos[] vuelos = restTemplate.getForObject(urlMicroProductorVuelos + "/getAll", Vuelos[].class);
 		return Arrays.asList(vuelos);
 	}
-	
+
 	public String createVuelo(Vuelos vuelo) {
 		return restTemplate.postForObject(urlMicroProductorVuelos + "/createVuelo", vuelo, String.class);
 	}
