@@ -1,0 +1,104 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Agencia de viajes</title>
+</head>
+<body>
+
+	<div class="container">
+		<h3>
+			<span>Datos de la reserva: </span>
+		</h3>
+		<br>
+		<div th:if="${usuarioDTO != null}">
+			Nombre usuario: <b><span th:text="${usuarioDTO.nombre}"></span></b><br>
+			DNI usuario: <b><span th:text="${usuarioDTO.dni}"></span></b>
+		</div>
+		<br>
+		<div>
+			<!-- Hotel form -->
+			<span>Datos del hotel: </span>
+			<form action="#" th:object="${hotelDTO}" method="GET"
+				class="form-horizontal">
+				<!-- idHotel field -->
+				<div class="form-group">
+					<label for="idHotel" class="control-label col-xs-2">Id </label> <input
+						class="form-control" id="idHotel" th:field="*{idHotel}"
+						style="width: 10em;" readonly />
+				</div>
+
+				<!-- Hotel field -->
+				<div class="form-group">
+					<label for="hotel" class="control-label col-xs-2">Nombre </label>
+					<input type="text" class="form-control" id="hotel"
+						th:field="*{hoteles}" style="width: 10em;" readonly />
+				</div>
+
+				<!-- Ciudad field -->
+				<div class="form-group">
+					<label for="ciudad" class="control-label col-xs-2">Ciudad </label>
+					<input type="text" class="form-control" id="ciudad"
+						th:field="*{ciudad}" style="width: 10em;" readonly />
+				</div>
+
+				<!-- Precio field -->
+				<div class="form-group">
+					<label for="precio" class="control-label col-xs-2">Precio </label>
+					<input type="number" class="form-control" id="precio"
+						th:field="*{precio}" style="width: 10em;" readonly />
+				</div>
+			</form>
+		</div>
+		<div>
+			<!-- Vuelo form -->
+			<span>Datos del vuelo: </span>
+			<form action="#" th:object="${vueloDTO}" method="GET"
+				class="form-horizontal">
+				<!-- idVuelo field -->
+				<div class="form-group">
+					<label for="idVuelo" class="control-label col-xs-2">Id </label> <input
+						class="form-control" id="idVuelo" th:field="*{idVuelo}"
+						style="width: 10em;" readonly />
+				</div>
+
+				<!-- Origin field -->
+				<div class="form-group">
+					<label for="origin" class="control-label col-xs-2">Origen </label>
+					<input type="text" class="form-control" id="origin"
+						th:field="*{origin}" style="width: 10em;" readonly />
+				</div>
+
+				<!-- Destination field -->
+				<div class="form-group">
+					<label for="destination" class="control-label col-xs-2">Destino
+					</label> <input type="text" class="form-control" id="destination"
+						th:field="*{destination}" style="width: 10em;" readonly />
+				</div>
+
+				<!-- Date field -->
+				<div class="form-group">
+					<label for="time" class="control-label col-xs-2">Fecha </label> <input
+						type="text" class="form-control" id="time" th:field="*{time}"
+						style="width: 10em;" readonly />
+				</div>
+
+				<!-- Price field -->
+				<div class="form-group">
+					<label for="price" class="control-label col-xs-2">Precio </label> <input
+						type="number" class="form-control" id="price" th:field="*{price}"
+						style="width: 10em;" readonly />
+				</div>
+			</form>
+		</div>
+
+		<br> <a th:href="@{/usuarios}">Volver a listado de usuarios</a>
+	</div>
+</body>
+</html>
