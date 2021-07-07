@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Agregar vuelo</title>
+</head>
+<body>
+	<div class="container">
+		<h3>
+			<span>Datos del vuelo: </span>
+		</h3>
+		<form action="#" th:object="${vuelo}" method="POST"
+			th:action="@{/viajes/vuelos/guardar-vuelo}" class="form-horizontal">
+			<!-- idVuelo field -->
+			<div class="form-group">
+				<input type="hidden" class="form-control" id="idVuelo"
+					th:field="*{idVuelo}" style="width: 15em;" />
+			</div>
+
+			<!-- Origin field -->
+			<div class="form-group">
+				<label for="origin" class="control-label col-xs-2">Origen </label> <input
+					type="text" class="form-control" id="origin" th:field="*{origin}"
+					placeholder="Introducir origen" style="width: 15em;" />
+			</div>
+
+			<!-- Destination field -->
+			<div class="form-group">
+				<label for="destination" class="control-label col-xs-2">Destino
+				</label> <input type="text" class="form-control" id="destination"
+					th:field="*{destination}" placeholder="Introducir destino"
+					style="width: 15em;" />
+			</div>
+
+			<!-- Price field -->
+			<div class="form-group">
+				<label for="price" class="control-label col-xs-2">Precio </label> <input
+					type="number" class="form-control" id="telefono"
+					th:field="*{price}" placeholder="Introducir precio"
+					style="width: 15em;" />
+			</div>
+
+			<!-- Time field -->
+			<div class="form-group">
+				<label for="time" class="control-label col-xs-2">Fecha </label> <input
+					type="date" class="form-control" id="time" th:field="*{time}"
+					placeholder="Introducir fecha" style="width: 15em;" />
+			</div>
+
+			<!--  Submit button -->
+			<div class="form-group">
+				<div class="col-xs-offset-2 col-xs-10">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</div>
+			</div>
+			<div class="form-group">
+				<span th:text="${mensaje}"></span>
+			</div>
+		</form>
+
+		<br>
+		<div>
+			<a target="_self" th:href="@{/viajes/vuelos}"><button
+					type="submit" class="btn btn-success btn-sm">Volver a
+					listado de vuelos</button></a>
+		</div>
+	</div>
+</body>
+</html>
