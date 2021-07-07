@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Agencia de viajes</title>
+</head>
+<body>
+	<h3>
+		<center>Listado de vuelos disponibles</center>
+	</h3>
+	<table class="table table-striped table-sm table-dark">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">ORIGEN</th>
+				<th scope="col">DESTINO</th>
+				<th scope="col">FECHA</th>
+				<th scope="col">PRECIO</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="v : ${vuelos}">
+				<td class="align-middle" th:text="${v?.idVuelo}"></td>
+				<td class="align-middle" th:text="${v?.origin}"></td>
+				<td class="align-middle" th:text="${v?.destination}"></td>
+				<td class="align-middle" th:text="${v?.time}"></td>
+				<td class="align-middle" th:text="${v?.price}"></td>
+				<td>
+					<a th:href="@{|/vuelos/detalle/${v?.idVuelo}|}" style="margin-right: 1.5em;">Ver detalle</a>
+					<a th:href="@{|/vuelos/borrar/${v?.idVuelo}|}">Borrar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="form-group">
+		<span th:text="${mensaje}"></span>
+	</div>
+
+	<br>
+	<div>
+		<a target="_blank" th:href="@{/vuelos/crear}"><button
+				type="submit" class="btn btn-success btn-sm">Crear vuelo</button></a>
+		<a target="_blank" th:href="@{/viajes}"><button
+				type="submit" class="btn btn-success btn-sm">Volver al menu
+			</button></a>
+	</div>
+</body>
+</html>

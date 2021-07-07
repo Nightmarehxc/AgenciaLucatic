@@ -1,0 +1,29 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Agencia de viajes</title>
+</head>
+<body>
+	<h3>
+		<center>Bienvenido a la Agencia de Viajes</center>
+	</h3>
+	<table class="table table-dark">
+		<thead>
+			<tr>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td><a th:href="@{/usuarios}">Listado de usuarios</a></td></tr>
+			<tr><td><a th:href="@{/hoteles}">Listado de hoteles</a></td></tr>
+			<tr><td><a th:href="@{/vuelos}">Listado de vuelos</a></td></tr>
+		</tbody>
+	</table>
+</body>
+</html>

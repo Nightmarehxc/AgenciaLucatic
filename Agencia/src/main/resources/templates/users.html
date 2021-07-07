@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Agencia de viajes</title>
+</head>
+<body>
+	<h3>
+		<center>Listado de usuarios</center>
+	</h3>
+	<table class="table table-striped table-sm table-dark">
+		<thead>
+			<tr>
+				<th scope="col">DNI</th>
+				<th scope="col">NOMBRE</th>
+				<th scope="col">OPCIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="u : ${usuarios}">
+				<td class="align-middle" th:text="${u?.dni}"></td>
+				<td class="align-middle" th:text="${u?.nombre}"></td>
+				<td><a target="_blank"
+					th:href="@{|/usuarios/detalle/${u?.dni}|}"><button
+							type="submit" class="btn btn-success btn-sm">Ver detalle</button></a></td>
+				<td><a target="_blank"
+					th:href="@{|/usuarios/borrar/${u?.dni}|}"><button
+							type="submit" class="btn btn-success btn-sm">Borrar</button></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="form-group">
+		<span th:text="${mensaje}"></span>
+	</div>
+
+	<br>
+	<div>
+		<a target="_blank" th:href="@{/usuarios/crear}"><button
+				type="submit" class="btn btn-success btn-sm">Crear usuario</button></a>
+		<a target="_blank" th:href="@{/viajes}"><button
+				type="submit" class="btn btn-success btn-sm">Volver al menu
+			</button></a>
+	</div>
+
+</body>
+</html>
