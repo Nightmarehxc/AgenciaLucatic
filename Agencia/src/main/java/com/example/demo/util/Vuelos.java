@@ -2,6 +2,9 @@ package com.example.demo.util;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
+@JsonRootName("Vuelos")
 public class Vuelos {
     
 	String idVuelo;
@@ -10,16 +13,15 @@ public class Vuelos {
 
     String destination;
 
-    String price;
+    double price;
 
     Date time;
 
 	public Vuelos() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Vuelos(String idVuelo, String origin, String destination, String price, Date time) {
+	public Vuelos(String idVuelo, String origin, String destination, double price, Date time) {
 		super();
 		this.idVuelo = idVuelo;
 		this.origin = origin;
@@ -52,11 +54,11 @@ public class Vuelos {
 		this.destination = destination;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
