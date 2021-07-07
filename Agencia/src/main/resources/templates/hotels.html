@@ -25,6 +25,7 @@
 		<tbody>
 			<tr th:each="h : ${hoteles}">
 				<td class="align-middle" th:text="${h?.idHotel}"></td>
+				<td class="align-middle" th:text="${h?.hoteles}"></td>
 				<td class="align-middle" th:text="${h?.ciudad}"></td>
 				<td class="align-middle" th:text="${h?.precio}"></td>
 				<td><a target="_blank"
