@@ -25,12 +25,15 @@
 		<tbody>
 			<tr th:each="h : ${hoteles}">
 				<td class="align-middle" th:text="${h?.idHotel}"></td>
+				<td class="align-middle" th:text="${h?.hoteles}"></td>
 				<td class="align-middle" th:text="${h?.ciudad}"></td>
 				<td class="align-middle" th:text="${h?.precio}"></td>
-				<td>
-					<a th:href="@{|/hoteles/detalle/${h?.idHotel}|}" style="margin-right: 1.5em;">Ver detalle</a>
-					<a th:href="@{|/hoteles/borrar/${h?.idHotel}|}">Borrar</a>
-				</td>
+				<td><a target="_blank"
+					th:href="@{|/hoteles/detalle/${h?.idHotel}|}"><button
+							type="submit" class="btn btn-success btn-sm">Ver detalle</button></a></td>
+				<td><a target="_blank"
+					th:href="@{|/hoteles/borrar/${h?.idHotel}|}"><button
+							type="submit" class="btn btn-success btn-sm">Borrar</button></a></td>
 			</tr>
 		</tbody>
 	</table>

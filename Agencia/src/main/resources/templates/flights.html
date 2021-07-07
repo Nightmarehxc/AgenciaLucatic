@@ -31,10 +31,12 @@
 				<td class="align-middle" th:text="${v?.destination}"></td>
 				<td class="align-middle" th:text="${v?.time}"></td>
 				<td class="align-middle" th:text="${v?.price}"></td>
-				<td>
-					<a th:href="@{|/vuelos/detalle/${v?.idVuelo}|}" style="margin-right: 1.5em;">Ver detalle</a>
-					<a th:href="@{|/vuelos/borrar/${v?.idVuelo}|}">Borrar</a>
-				</td>
+				<td><a target="_blank"
+					th:href="@{|/vuelos/detalle/${v?.idVuelo}|}"><button
+							type="submit" class="btn btn-success btn-sm">Ver detalle</button></a></td>
+				<td><a target="_blank"
+					th:href="@{|/vuelos/borrar/${v?.idVuelo}|}"><button
+							type="submit" class="btn btn-success btn-sm">Borrar</button></a></td>
 			</tr>
 		</tbody>
 	</table>
