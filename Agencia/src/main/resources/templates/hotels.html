@@ -18,22 +18,17 @@
 		<thead>
 			<tr>
 				<th scope="col">ID</th>
+				<th scope="col">NOMBRE</th>
 				<th scope="col">CIUDAD</th>
 				<th scope="col">PRECIO</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="h : ${hoteles}">
-				<td class="align-middle" th:text="${h?.idHotel}"></td>
+				<td class="align-middle" th:text="${h?.id}"></td>
 				<td class="align-middle" th:text="${h?.hoteles}"></td>
 				<td class="align-middle" th:text="${h?.ciudad}"></td>
 				<td class="align-middle" th:text="${h?.precio}"></td>
-				<td><a target="_blank"
-					th:href="@{|/hoteles/detalle/${h?.idHotel}|}"><button
-							type="submit" class="btn btn-success btn-sm">Ver detalle</button></a></td>
-				<td><a target="_blank"
-					th:href="@{|/hoteles/borrar/${h?.idHotel}|}"><button
-							type="submit" class="btn btn-success btn-sm">Borrar</button></a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -43,11 +38,10 @@
 
 	<br>
 	<div>
-		<a target="_blank" th:href="@{/hotel/crear}"><button
-				type="submit" class="btn btn-success btn-sm">Crear hotel</button></a>
-		<a target="_blank" th:href="@{/viajes}"><button
-				type="submit" class="btn btn-success btn-sm">Volver al menu
-			</button></a>
+		<a target="_self" th:href="@{/viajes}"><button type="submit"
+				class="btn btn-success btn-sm">Volver al menu</button></a> <a
+			target="_self" th:href="@{/viajes/hoteles/crear}"><button
+				type="submit" class="btn btn-primary btn-sm">Crear hotel</button></a>
 	</div>
 </body>
 </html>

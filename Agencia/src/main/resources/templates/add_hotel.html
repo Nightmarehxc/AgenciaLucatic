@@ -1,0 +1,68 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Agregar hotel</title>
+</head>
+<body>
+	<div class="container">
+		<h3>
+			<span>Datos del hotel: </span>
+		</h3>
+		<form action="#" th:object="${hotel}" method="POST"
+			th:action="@{/viajes/hoteles/guardar-hotel}" class="form-horizontal">
+			<!-- idVuelo field -->
+			<div class="form-group">
+				<input type="hidden" class="form-control" id="id" th:field="*{id}"
+					style="width: 15em;" />
+			</div>
+
+			<!-- Hoteles field -->
+			<div class="form-group">
+				<label for="hoteles" class="control-label col-xs-2">Nombre </label>
+				<input type="text" class="form-control" id="hoteles"
+					th:field="*{hoteles}" placeholder="Introducir nombre"
+					style="width: 15em;" />
+			</div>
+
+			<!-- Ciudad field -->
+			<div class="form-group">
+				<label for="ciudad" class="control-label col-xs-2">Ciudad </label> <input
+					type="text" class="form-control" id="ciudad" th:field="*{ciudad}"
+					placeholder="Introducir ciudad" style="width: 15em;" />
+			</div>
+
+			<!-- Precio field -->
+			<div class="form-group">
+				<label for="precio" class="control-label col-xs-2">Precio </label> <input
+					type="number" class="form-control" id="precio"
+					th:field="*{precio}" placeholder="Introducir precio"
+					style="width: 15em;" />
+			</div>
+
+			<!--  Submit button -->
+			<div class="form-group">
+				<div class="col-xs-offset-2 col-xs-10">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</div>
+			</div>
+			<div class="form-group">
+				<span th:text="${mensaje}"></span>
+			</div>
+		</form>
+
+		<br>
+		<div>
+			<a target="_self" th:href="@{/viajes/hoteles}"><button
+					type="submit" class="btn btn-success btn-sm">Volver a
+					listado de hoteles</button></a>
+		</div>
+	</div>
+</body>
+</html>
