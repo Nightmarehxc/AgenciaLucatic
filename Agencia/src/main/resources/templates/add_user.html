@@ -1,0 +1,48 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Alta Usuarios</title>
+</head>
+<body>
+	<h3>
+		<center>Altas Usuarios</center>
+	</h3>
+	<div class="container">
+		<form action="#" th:object="${usuario}" method="POST"
+			th:action="@{/usuarios/grabar_usuario}" class="form-horizontal">
+			<!-- Account Number field "-->
+
+			<!-- Owner name field -->
+			<div class="form-group">
+				<label for="dni" class="control-label col-xs-2">DNI </label> <input
+					type="text" class="form-control" placeholder="DNI" id="dni"
+					th:field="*{dni}" style="width: 10em;" />
+			</div>
+			<div class="form-group">
+				<label for="nombre" class="control-label col-xs-2">Nombre </label> <input
+					type="text" class="form-control" id="nombre" th:field="*{nombre}"
+					placeholder="Nombre" style="width: 10em;" />
+			</div>
+			<!--  Submit button -->
+			<div class="form-group">
+				<div class="col-xs-offset-2 col-xs-10">
+					<button type="submit" class="btn btn-success btn-sm">GRABAR</button>
+				</div>
+			</div>
+		</form>
+		<div class="form-group">
+			<span th:text="${mensaje}"></span>
+		</div>
+	</div>
+	<br>
+	<a th:href="@{|/usuarios/|}"><button type="submit"
+			class="btn btn-success btn-sm">Volver</button></a>
+</body>
+</html>

@@ -29,8 +29,7 @@
 				<td><a target="_blank"
 					th:href="@{|/usuarios/detalle/${u?.dni}|}"><button
 							type="submit" class="btn btn-success btn-sm">Ver detalle</button></a></td>
-				<td><a target="_blank"
-					th:href="@{|/usuarios/borrar/${u?.dni}|}"><button
+				<td><a th:href="@{|/usuarios/borrar/${u?.dni}|}"><button
 							type="submit" class="btn btn-success btn-sm">Borrar</button></a></td>
 			</tr>
 		</tbody>
@@ -43,9 +42,8 @@
 	<div>
 		<a target="_blank" th:href="@{/usuarios/crear}"><button
 				type="submit" class="btn btn-success btn-sm">Crear usuario</button></a>
-		<a target="_blank" th:href="@{/viajes}"><button
-				type="submit" class="btn btn-success btn-sm">Volver al menu
-			</button></a>
+		<a target="_blank" th:href="@{/viajes}"><button type="submit"
+				class="btn btn-success btn-sm">Volver al menu</button></a>
 	</div>
 
 </body>
