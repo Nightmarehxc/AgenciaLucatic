@@ -34,5 +34,11 @@ public class VuelosController
 
     }
 
+    @RequestMapping("/getVuelo/{id}")
+    Vuelo getVuelo(@PathVariable("id") String id)
+    {
+        return vueloService.getVueloByID(id);
+    }
+
 
 }

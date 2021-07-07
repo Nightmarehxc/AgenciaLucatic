@@ -11,4 +11,6 @@ public interface VueloService
     Set<Vuelo> getAllVuelosByDestination(String destination);
 
     String saveVuelo(Vuelo vuelo);
+
+    Vuelo getVueloByID(String id);
 }
