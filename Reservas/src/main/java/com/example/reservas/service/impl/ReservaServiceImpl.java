@@ -97,4 +97,12 @@ public class ReservaServiceImpl implements ReservaService
         }
         return response;
     }
+
+    @Override
+    public Set<Reserva> getAllReservas()
+    {
+        Set<Reserva> reservas = new HashSet<>();
+        reservaDAO.findAll().forEach(reservas::add);
+        return reservas;
+    }
 }

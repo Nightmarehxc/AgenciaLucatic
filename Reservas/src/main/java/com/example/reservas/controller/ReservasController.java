@@ -42,4 +42,10 @@ public class ReservasController
         return reservaService.getAllByVuelo(id);
     }
 
+
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    Set<Reserva> getAllReservas()
+    {
+        return reservaService.getAllReservas();
+    }
 }

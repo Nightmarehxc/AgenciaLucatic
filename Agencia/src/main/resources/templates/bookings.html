@@ -1,0 +1,67 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Agencia de viajes</title>
+</head>
+<body>
+<h3>
+    <center>Listado de hoteles disponibles</center>
+</h3>
+<!--<select name="tipoRequest" id="dropTerminales"-->
+<!--        th:onchange="'window.location.href = \'' + @{/reservas} + '/\' + this.value ' ">-->
+<!--    <option selected="true" disabled>Seleccione la terminal</option>-->
+<!--    <option value="todas">Todas</option>-->
+<!--    <option th:each="tipoRequest : ${tipos}"></option>-->
+<!--</select>-->
+
+
+<table class="table table-striped table-sm table-dark">
+    <thead>
+    <tr>
+        <th scope="col">idReserva</th>
+        <th scope="col">holtelId</th>
+        <th scope="col">userId</th>
+        <th scope="col">vueloId</th>
+        <th scope="col">totalPrice</th>
+        <th scope="col">n</th>
+        <th scope="col">localDateTime</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="h : ${rVuelo}">
+        <td class="align-middle" th:text="${h?.idReserva}"></td>
+        <td class="align-middle" th:text="${h?.holtelId}"></td>
+        <td class="align-middle" th:text="${h?.userId}"></td>
+        <td class="align-middle" th:text="${h?.vueloId}"></td>
+        <td class="align-middle" th:text="${h?.totalPrice}"></td>
+        <td class="align-middle" th:text="${h?.n}"></td>
+        <td class="align-middle" th:text="${h?.localDateTime}"></td>
+    </tr>
+    </tbody>
+</table>
+<div class="form-group">
+    <span th:text="${mensaje}"></span>
+</div>
+
+<br>
+<div>
+    <a target="_self" th:href="@{/viajes}">
+        <button type="submit"
+                class="btn btn-success btn-sm">Volver al menu
+        </button>
+    </a> <a
+        target="_self" th:href="@{/viajes/hoteles/crear}">
+    <button
+            type="submit" class="btn btn-primary btn-sm">Crear hotel
+    </button>
+</a>
+</div>
+</body>
+</html>
