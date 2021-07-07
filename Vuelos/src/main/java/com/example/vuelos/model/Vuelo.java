@@ -18,7 +18,7 @@ public class Vuelo implements Serializable
 
     String destination;
 
-    String price;
+    double price;
 
     Date time;
 
@@ -26,7 +26,7 @@ public class Vuelo implements Serializable
     {
     }
 
-    public Vuelo(String idVuelo, String origin, String destination, String price, Date time)
+    public Vuelo(String idVuelo, String origin, String destination, double price, Date time)
     {
         this.idVuelo = idVuelo;
         this.origin = origin;
@@ -65,12 +65,12 @@ public class Vuelo implements Serializable
         this.destination = destination;
     }
 
-    public String getPrice()
+    public double getPrice()
     {
         return price;
     }
 
-    public void setPrice(String price)
+    public void setPrice(double price)
     {
         this.price = price;
     }
