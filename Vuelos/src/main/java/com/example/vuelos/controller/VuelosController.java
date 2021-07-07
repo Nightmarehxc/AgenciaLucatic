@@ -24,14 +24,12 @@ public class VuelosController
     Set<Vuelo> getAll()
     {
         return vueloService.getAllVuelos();
-
     }
 
     @RequestMapping(value = "/getAllByDestination/{destination}", method = RequestMethod.GET)
     Set<Vuelo> getAllByDestination(@PathVariable("destination") String destination)
     {
         return vueloService.getAllVuelosByDestination(destination);
-
     }
 
     @RequestMapping(value = "/getVuelo/{id}", method = RequestMethod.GET)
