@@ -3,11 +3,12 @@ package com.example.vuelos.service.impl;
 import com.example.vuelos.dao.VuelosDAO;
 import com.example.vuelos.model.Vuelo;
 import com.example.vuelos.service.VueloService;
-import com.mongodb.DuplicateKeyException;
 import com.mongodb.MongoCursorNotFoundException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +23,8 @@ public class VueloServiceImpl implements VueloService
     {
         Set<Vuelo> response = new HashSet<>();
         vuelosDAO.findAll().forEach(response::add);
+        String a;
+
 
         return response;
     }
@@ -37,11 +40,19 @@ public class VueloServiceImpl implements VueloService
     @Override
     public String saveVuelo(Vuelo vuelo)
     {
+        vuelosDAO.deleteAll();
         String response;
         try
         {
+            String destination = refactorString(vuelo.getDestination());
+            String origin = refactorString(vuelo.getOrigin());
+            vuelo.setOrigin(origin);
+            vuelo.setOrigin(destination);
+            String id = LocalDateTime.now().getDayOfYear() + "o" + origin + "d" + destination;
+            id = id.replaceAll("\\s+", "");
+            vuelo.setIdVuelo(id);
 
-            vuelo.setIdVuelo(vuelo.getTime().getTime() + vuelo.getDestination());
+
             vuelosDAO.save(vuelo);
             response = "OK";
 
@@ -51,6 +62,14 @@ public class VueloServiceImpl implements VueloService
             response = e.getMessage();
         }
         return response;
+    }
+
+    private String refactorString(String input)
+    {
+        String cadena = input;
+        cadena = cadena.toUpperCase();
+        cadena = StringUtils.stripAccents(cadena);
+        return cadena;
     }
 
     @Override

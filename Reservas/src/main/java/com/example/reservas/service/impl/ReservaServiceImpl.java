@@ -28,12 +28,15 @@ public class ReservaServiceImpl implements ReservaService
     @Override
     public String saveReserva(ReservaDTO reservaDTO)
     {
-
+        reservaDAO.deleteAll();
         String response = null;
         try
         {
             Reserva newReserva = reservaMapper.reservaToDTO(reservaDTO);
             newReserva.setLocalDateTime(LocalDateTime.now());
+            newReserva.setIdReserva(LocalDateTime.now().getHour() + "V" + reservaDTO.getUserId());
+            newReserva.setTotalPrice(reservaDTO.getTotalPrice() * reservaDTO.getN());
+            newReserva.setN(reservaDTO.getN());
             reservaDAO.save(newReserva);
         }
         catch (DuplicateKeyException de)
@@ -85,7 +88,7 @@ public class ReservaServiceImpl implements ReservaService
         Set<Reserva> response = new HashSet<>();
         try
         {
-            reservaDAO.findAllByHoltelId(id).forEach(response::add);
+            reservaDAO.findAllByVueloId(id).forEach(response::add);
 
         }
         catch (MongoCursorNotFoundException e)

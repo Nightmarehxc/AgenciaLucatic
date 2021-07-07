@@ -19,21 +19,25 @@ public class Reserva implements Serializable
     private String holtelId;
     private String userId;
     private String vueloId;
+    double totalPrice;
+    int n;
     private LocalDateTime localDateTime;
 
     public Reserva()
     {
     }
 
-    public Reserva(String idReserva, String holtelId, String userId, String vueloId, LocalDateTime localDateTime)
+    public Reserva(String idReserva, String holtelId, String userId, String vueloId, double totalPrice, int n, LocalDateTime localDateTime)
     {
         this.idReserva = idReserva;
         this.holtelId = holtelId;
         this.userId = userId;
         this.vueloId = vueloId;
+        this.totalPrice = totalPrice;
+        this.n = n;
         this.localDateTime = localDateTime;
     }
-    //    public String getIdReserva()
+//    public String getIdReserva()
 //    {
 //        return idReserva;
 //    }
