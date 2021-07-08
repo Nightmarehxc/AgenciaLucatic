@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.util.Hoteles;
 import com.example.demo.util.Reservas;
 import com.example.demo.util.ResponseDTO;
+import com.example.demo.util.Vuelos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -57,7 +58,9 @@ public class ReservaService
         String hotelID = reserva.getVuelos().getIdVuelo();
 
         Hoteles h1 = viajeService.getHotelById(reserva.getHoteles().getId());
-        Hoteles
+
+        Vuelos v = viajeService.getVueloById(reserva.getVuelos().getIdVuelo());
+
         restTemplate.postForObject(urlMicroProductorReservas + "/createReserva", r, Reservas.class);
 
 
