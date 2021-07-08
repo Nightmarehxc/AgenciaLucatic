@@ -26,11 +26,9 @@
 			<tr th:each="u : ${usuarios}">
 				<td class="align-middle" th:text="${u?.dni}"></td>
 				<td class="align-middle" th:text="${u?.nombre}"></td>
-				<td><a target="_blank"
-					th:href="@{|/usuarios/detalle/${u?.dni}|}"><button
+				<td><a th:href="@{|/usuarios/detalle/${u?.dni}|}"><button
 							type="submit" class="btn btn-success btn-sm">Ver detalle</button></a></td>
-				<td><a target="_blank"
-					th:href="@{|/usuarios/borrar/${u?.dni}|}"><button
+				<td><a th:href="@{|/usuarios/borrar/${u?.dni}|}"><button
 							type="submit" class="btn btn-success btn-sm">Borrar</button></a></td>
 			</tr>
 		</tbody>
@@ -41,11 +39,10 @@
 
 	<br>
 	<div>
-		<a target="_blank" th:href="@{/usuarios/crear}"><button
-				type="submit" class="btn btn-success btn-sm">Crear usuario</button></a>
-		<a target="_blank" th:href="@{/viajes}"><button
-				type="submit" class="btn btn-success btn-sm">Volver al menu
-			</button></a>
+		<a th:href="@{/viajes}"><button type="submit"
+				class="btn btn-success btn-sm">Volver al menu</button></a> <a
+			th:href="@{/usuarios/crear}"><button type="submit"
+				class="btn btn-primary btn-sm">Crear usuario</button></a>
 	</div>
 
 </body>
