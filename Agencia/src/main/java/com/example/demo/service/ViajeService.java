@@ -19,40 +19,32 @@ public class ViajeService {
 	public String urlMicroProductorVuelos = "http://agencia-micro-vuelos/vuelos";
 	public String urlMicroProductorHoteles = "http://agencia-micro-hoteles/api";
 
-	public List<Hoteles> getHoteles()
-	{
+	public List<Hoteles> getHoteles() {
 		Hoteles[] hoteles = restTemplate.getForObject(urlMicroProductorHoteles + "/hoteles", Hoteles[].class);
 		return Arrays.asList(hoteles);
 	}
 
-
-	public Hoteles getHotelById(String id)
-	{
-		Hoteles hotel = restTemplate.getForObject(urlMicroProductorHoteles + "/getHoteles{id}", Hoteles.class);
+	public Hoteles getHotelById(String id) {
+		Hoteles hotel = restTemplate.getForObject(urlMicroProductorHoteles + "/getHoteles/{id}", Hoteles.class, id);
 		return hotel;
 	}
 
-	public Hoteles createHotel(Hoteles hotel)
-	{
+	public Hoteles createHotel(Hoteles hotel) {
 		return restTemplate.postForObject(urlMicroProductorHoteles + "/hoteles", hotel, Hoteles.class);
 	}
 
 	// VUELOS
-	public List<Vuelos> getVuelos()
-	{
+	public List<Vuelos> getVuelos() {
 		Vuelos[] vuelos = restTemplate.getForObject(urlMicroProductorVuelos + "/getAll", Vuelos[].class);
 		return Arrays.asList(vuelos);
 	}
 
-	public String createVuelo(Vuelos vuelo)
-	{
+	public String createVuelo(Vuelos vuelo) {
 		return restTemplate.postForObject(urlMicroProductorVuelos + "/createVuelo", vuelo, String.class);
 	}
 
-	public Vuelos getVueloById(String id)
-	{
-		return restTemplate.getForObject(urlMicroProductorVuelos + "/getVuelo/" + id, Vuelos.class);
+	public Vuelos getVueloById(String id) {
+		return restTemplate.getForObject(urlMicroProductorVuelos + "/getVuelo/{id}", Vuelos.class, id);
 	}
-
 
 }

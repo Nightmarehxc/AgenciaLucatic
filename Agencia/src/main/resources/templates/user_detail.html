@@ -17,15 +17,15 @@
 			<span>Datos de la reserva: </span>
 		</h3>
 		<br>
-		<div th:if="${usuarioDTO != null}">
-			Nombre usuario: <b><span th:text="${usuarioDTO.nombre}"></span></b><br>
-			DNI usuario: <b><span th:text="${usuarioDTO.dni}"></span></b>
+		<div th:if="${usuario != null}">
+			Nombre usuario: <b><span th:text="${usuario.nombre}"></span></b><br>
+			DNI usuario: <b><span th:text="${usuario.dni}"></span></b>
 		</div>
 		<br>
 		<div>
 			<!-- Hotel form -->
 			<span>Datos del hotel: </span>
-			<form action="#" th:object="${hotelDTO}" method="GET"
+			<form action="#" th:object="${hotel}" method="GET"
 				class="form-horizontal">
 				<!-- idHotel field -->
 				<div class="form-group">
@@ -36,9 +36,9 @@
 
 				<!-- Hotel field -->
 				<div class="form-group">
-					<label for="hotel" class="control-label col-xs-2">Nombre </label>
-					<input type="text" class="form-control" id="hotel"
-						th:field="*{hoteles}" style="width: 10em;" readonly />
+					<label for="hotel" class="control-label col-xs-2">Nombre </label> <input
+						type="text" class="form-control" id="hotel" th:field="*{hoteles}"
+						style="width: 10em;" readonly />
 				</div>
 
 				<!-- Ciudad field -->
@@ -59,7 +59,7 @@
 		<div>
 			<!-- Vuelo form -->
 			<span>Datos del vuelo: </span>
-			<form action="#" th:object="${vueloDTO}" method="GET"
+			<form action="#" th:object="${vuelo}" method="GET"
 				class="form-horizontal">
 				<!-- idVuelo field -->
 				<div class="form-group">
@@ -97,6 +97,11 @@
 				</div>
 			</form>
 		</div>
+		<br>
+<!-- 		<div th:if="${usuario != null}"> -->
+<!-- 			Nombre usuario: <b><span th:text="${usuario.nombre}"></span></b><br> -->
+<!-- 			DNI usuario: <b><span th:text="${usuario.dni}"></span></b> -->
+<!-- 		</div> -->
 
 		<br> <a th:href="@{/usuarios}">Volver a listado de usuarios</a>
 	</div>

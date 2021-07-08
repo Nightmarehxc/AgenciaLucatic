@@ -46,7 +46,7 @@ public class HotelesRestController
     }
 
 
-    @GetMapping("/getHoteles{id}")
+    @GetMapping("/getHoteles/{id}")
     public Hoteles getHotelByID(@PathVariable("id") String id)
     {
         Hoteles h = hotelesRepository.findById(id).orElse(null);
