@@ -1,14 +1,13 @@
 package com.example.demo.service;
 
-import java.util.Arrays;
-import java.util.List;
-
+import com.example.demo.util.Hoteles;
+import com.example.demo.util.Vuelos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.util.Hoteles;
-import com.example.demo.util.Vuelos;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class ViajeService {
@@ -23,7 +22,12 @@ public class ViajeService {
 		Hoteles[] hoteles = restTemplate.getForObject(urlMicroProductorHoteles + "/hoteles", Hoteles[].class);
 		return Arrays.asList(hoteles);
 	}
-	
+
+	public Hoteles getHotelById(String id) {
+		Hoteles hotel = restTemplate.getForObject(urlMicroProductorHoteles + "/getHoteles/{id}", Hoteles.class, id);
+		return hotel;
+	}
+
 	public Hoteles createHotel(Hoteles hotel) {
 		return restTemplate.postForObject(urlMicroProductorHoteles + "/hoteles", hotel, Hoteles.class);
 	}
@@ -37,4 +41,9 @@ public class ViajeService {
 	public String createVuelo(Vuelos vuelo) {
 		return restTemplate.postForObject(urlMicroProductorVuelos + "/createVuelo", vuelo, String.class);
 	}
+
+	public Vuelos getVueloById(String id) {
+		return restTemplate.getForObject(urlMicroProductorVuelos + "/getVuelo/{id}", Vuelos.class, id);
+	}
+
 }

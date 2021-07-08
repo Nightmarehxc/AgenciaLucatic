@@ -6,16 +6,16 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 @JsonRootName("Vuelos")
 public class Vuelos {
-    
+
 	String idVuelo;
 
-    String origin;
+	String origin;
 
-    String destination;
+	String destination;
 
-    double price;
+	double price;
 
-    Date time;
+	Date time;
 
 	public Vuelos() {
 		super();
@@ -69,6 +69,11 @@ public class Vuelos {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-    
-    
+
+	@Override
+	public String toString() {
+		return "Vuelos [idVuelo=" + idVuelo + ", origin=" + origin + ", destination=" + destination + ", price=" + price
+				+ ", time=" + time + "]";
+	}
+
 }

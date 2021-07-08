@@ -6,19 +6,18 @@ public class Hoteles {
 	private String hoteles;
 	private String ciudad;
 	private int precio;
-	
 
 	public Hoteles() {
 		super();
 	}
-	
+
 	public Hoteles(String hoteles, String ciudad, int precio) {
 		super();
 		this.hoteles = hoteles;
 		this.ciudad = ciudad;
 		this.precio = precio;
 	}
-	
+
 	public Hoteles(String id, String hoteles, String ciudad, int precio) {
 		super();
 		this.id = id;
@@ -58,5 +57,10 @@ public class Hoteles {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Hoteles [id=" + id + ", hoteles=" + hoteles + ", ciudad=" + ciudad + ", precio=" + precio + "]";
+	}
+
 }
