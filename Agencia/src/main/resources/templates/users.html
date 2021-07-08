@@ -26,8 +26,6 @@
 			<tr th:each="u : ${usuarios}">
 				<td class="align-middle" th:text="${u?.dni}"></td>
 				<td class="align-middle" th:text="${u?.nombre}"></td>
-				<td><a th:href="@{|/usuarios/detalle/${u?.dni}|}"><button
-							type="submit" class="btn btn-success btn-sm">Ver detalle</button></a></td>
 				<td><a th:href="@{|/reservas/crear/${u?.dni}|}"><button
 							type="submit" class="btn btn-success btn-sm">Realizar reserva</button></a></td>
 				<td><a th:href="@{|/usuarios/borrar/${u?.dni}|}"><button

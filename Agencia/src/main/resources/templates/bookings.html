@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h3>
-		<center>Listado de hoteles disponibles</center>
+		<center>Listado de reservas</center>
 	</h3>
 	<!--<select name="tipoRequest" id="dropTerminales"-->
 	<!--        th:onchange="'window.location.href = \'' + @{/reservas} + '/\' + this.value ' ">-->
@@ -43,6 +43,8 @@
 				<td class="align-middle" th:text="${r?.totalPrice}"></td>
 				<td class="align-middle" th:text="${r?.n}"></td>
 				<td class="align-middle" th:text="${r?.localDateTime}"></td>
+				<td><a th:href="@{|/reservas/detalle-reserva/${r?.idReserva}|}"><button
+							type="submit" class="btn btn-success btn-sm">Ver detalle</button></a></td>
 			</tr>
 		</tbody>
 	</table>
