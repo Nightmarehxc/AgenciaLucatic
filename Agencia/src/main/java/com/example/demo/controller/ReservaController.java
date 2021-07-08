@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.ReservaService;
-import com.example.demo.util.Reservas;
+import com.example.demo.util.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,14 +44,25 @@ public class ReservaController
         m.addAttribute("rVuelo", reservaService.getAll());
         return "bookings";
     }
+//
+//    @RequestMapping(value = ("/saveReserva"), method = RequestMethod.POST)
+//    public String saveUser(Model m, Reservas reserva)
+//    {
+//        reservaService.saveUser(reserva);
+//        System.out.println("creado con exto" + reserva);
+//        return "menu";
+//    }
+
 
     @RequestMapping(value = ("/saveReserva"), method = RequestMethod.POST)
-    public String saveUser(Model m, Reservas reserva)
+    public String saveUser(Model m, ResponseDTO response)
     {
-        reservaService.saveUser(reserva);
-        System.out.println("creado con exto" + reserva);
+        reservaService.saveUser(response);
+//        System.out.println("creado con exto" + reserva);
         return "menu";
     }
+
+
 
 
 }

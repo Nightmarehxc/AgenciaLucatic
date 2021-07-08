@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.util.Hoteles;
 import com.example.demo.util.Reservas;
+import com.example.demo.util.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +17,13 @@ public class ReservaService
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    ViajeService viajeService;
+
     public String urlMicroProductorReservas = "http://agencia-micro-reservas/reservas";
+    public String urlMicroProductorHoteles = "http://agencia-micro-hoteles/api";
+    public String urlMicroProductorVuelos = "http://agencia-micro-vuelos/vuelos";
+
 
     public List<Reservas> getAllByUser(String id)
     {
@@ -35,11 +43,26 @@ public class ReservaService
         return Arrays.asList(reservas);
     }
 
-    public void saveUser(Reservas reserva)
+//    public void saveUser(Reservas reserva)
+//    {
+//        restTemplate.postForObject(urlMicroProductorReservas + "/createReserva", reserva, Reservas.class);
+//
+//    }
+
+
+    public void saveUser(ResponseDTO reserva)
     {
-        restTemplate.postForObject(urlMicroProductorReservas + "/createReserva", reserva, Reservas.class);
+        Reservas r = reserva.getReservas();
+        String vueloID = reserva.getVuelos().getIdVuelo();
+        String hotelID = reserva.getVuelos().getIdVuelo();
+
+        Hoteles h1 = viajeService.getHotelById(reserva.getHoteles().getId());
+        Hoteles
+        restTemplate.postForObject(urlMicroProductorReservas + "/createReserva", r, Reservas.class);
+
 
     }
+
 
     public List<Reservas> getAll()
     {

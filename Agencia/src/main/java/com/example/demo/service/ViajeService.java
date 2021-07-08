@@ -1,14 +1,13 @@
 package com.example.demo.service;
 
-import java.util.Arrays;
-import java.util.List;
-
+import com.example.demo.util.Hoteles;
+import com.example.demo.util.Vuelos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.util.Hoteles;
-import com.example.demo.util.Vuelos;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class ViajeService {
@@ -19,22 +18,40 @@ public class ViajeService {
 	public String urlMicroProductorVuelos = "http://agencia-micro-vuelos/vuelos";
 	public String urlMicroProductorHoteles = "http://agencia-micro-hoteles/api";
 
-	public List<Hoteles> getHoteles() {
+	public List<Hoteles> getHoteles()
+	{
 		Hoteles[] hoteles = restTemplate.getForObject(urlMicroProductorHoteles + "/hoteles", Hoteles[].class);
 		return Arrays.asList(hoteles);
 	}
-	
-	public Hoteles createHotel(Hoteles hotel) {
+
+
+	public Hoteles getHotelById(String id)
+	{
+		Hoteles hotel = restTemplate.getForObject(urlMicroProductorHoteles + "/getHoteles{id}<", Hoteles.class);
+		return hotel;
+	}
+
+	public Hoteles createHotel(Hoteles hotel)
+	{
 		return restTemplate.postForObject(urlMicroProductorHoteles + "/hoteles", hotel, Hoteles.class);
 	}
 
 	// VUELOS
-	public List<Vuelos> getVuelos() {
+	public List<Vuelos> getVuelos()
+	{
 		Vuelos[] vuelos = restTemplate.getForObject(urlMicroProductorVuelos + "/getAll", Vuelos[].class);
 		return Arrays.asList(vuelos);
 	}
 
-	public String createVuelo(Vuelos vuelo) {
+	public String createVuelo(Vuelos vuelo)
+	{
 		return restTemplate.postForObject(urlMicroProductorVuelos + "/createVuelo", vuelo, String.class);
 	}
+
+	public Vuelos getVueloById(String id)
+	{
+		return restTemplate.getForObject(urlMicroProductorVuelos + "/getVuelo/" + id, Vuelos.class);
+	}
+
+
 }
