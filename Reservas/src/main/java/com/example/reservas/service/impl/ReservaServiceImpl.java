@@ -1,12 +1,5 @@
 package com.example.reservas.service.impl;
 
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.example.reservas.dao.ReservaDAO;
 import com.example.reservas.dto.ReservaDTO;
 import com.example.reservas.mapper.ReservaMapper;
@@ -14,8 +7,13 @@ import com.example.reservas.model.Reserva;
 import com.example.reservas.service.ReservaService;
 import com.mongodb.DuplicateKeyException;
 import com.mongodb.MongoCursorNotFoundException;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -107,5 +105,13 @@ public class ReservaServiceImpl implements ReservaService
         Set<Reserva> reservas = new HashSet<>();
         reservaDAO.findAll().forEach(reservas::add);
         return reservas;
+    }
+
+    @Override
+    public Reserva getReservaById(String id)
+    {
+
+        return reservaDAO.findById(id).orElse(null);
+
     }
 }
