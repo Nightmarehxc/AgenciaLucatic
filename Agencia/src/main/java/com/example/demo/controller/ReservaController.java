@@ -31,6 +31,12 @@ public class ReservaController {
 	@Autowired
 	private ViajeService viajeService;
 
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
+	public String getAll(Model m) {
+		m.addAttribute("reservas", reservaService.getAll());
+		return "bookings";
+	}
+
 	@RequestMapping(value = "/getAllByUser", method = RequestMethod.GET)
 	public String getAllByUser(@RequestParam("id") String id, Model m) {
 		m.addAttribute("rUser", reservaService.getAllByUser(id));
@@ -49,12 +55,6 @@ public class ReservaController {
 		return "reservasByVuelo";
 	}
 
-	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
-	public String getAll(Model m) {
-		m.addAttribute("reservas", reservaService.getAll());
-		return "bookings";
-	}
-
 	@RequestMapping("/crear/{idUsuario}")
 	public String createReserva(@PathVariable("idUsuario") String idUsuario, Model m) {
 		Usuarios usuario = usuarioService.find_by_dni(idUsuario);
@@ -68,8 +68,10 @@ public class ReservaController {
 	}
 
 	@RequestMapping(value = ("/saveReserva"), method = RequestMethod.POST)
-	public String saveUser(Model m, Reservas reserva) {
-		reserva.setTotalPrice(500);
+	public String saveReserva(Model m, Reservas reserva) {
+		int precioHotelAux = viajeService.getHotelById(reserva.getHoltelId()).getPrecio();
+		double precioVueloAux = viajeService.getVueloById(reserva.getVueloId()).getPrice();
+		reserva.setTotalPrice(precioHotelAux + precioVueloAux);
 		String res = reservaService.saveReserva(reserva);
 		if (res.equals("OK")) {
 			m.addAttribute("mensaje", "Reserva creada correctamente");
