@@ -48,4 +48,10 @@ public class ReservasController
     {
         return reservaService.getAllReservas();
     }
+
+    @RequestMapping(value = "/getByID", method = RequestMethod.GET)
+    Reserva getAllReservas(@RequestParam String id)
+    {
+        return reservaService.getReservaById(id);
+    }
 }

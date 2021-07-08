@@ -16,4 +16,6 @@ public interface ReservaService
     Set<Reserva> getAllByVuelo(String id);
 
     Set<Reserva> getAllReservas();
+
+    Reserva getReservaById(String id);
 }
