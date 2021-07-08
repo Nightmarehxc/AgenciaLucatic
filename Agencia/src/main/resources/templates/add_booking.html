@@ -1,0 +1,93 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Agencia de viajes</title>
+</head>
+<body>
+
+	<div class="container">
+		<h3>
+			<span>Datos de la reserva: </span>
+		</h3>
+		<br>
+		<div th:if="${usuario != null}">
+			Nombre usuario: <b><span th:text="${usuario.nombre}"></span></b><br>
+			DNI usuario: <b><span th:text="${usuario.dni}"></span></b>
+		</div>
+		<br>
+		<form action="#" th:object="${reserva}" method="POST"
+			th:action="@{/reservas/saveReserva}" class="form-horizontal">
+			<div>
+				<input type="hidden" class="form-control" id="idReserva"
+					th:field="*{idReserva}" style="width: 10em;" /> <input
+					type="hidden" class="form-control" id="userId" th:field="*{userId}"
+					style="width: 10em;" />
+			</div>
+			<div>
+				<!-- Hoteles -->
+				<span>Hoteles disponibles </span>
+				<div>
+					<select name="hotel" id="dropHoteles" th:field="*{holtelId}"
+						style="width: 30em;">
+						<option selected="true" value="" disabled>Seleccione un
+							hotel</option>
+						<option th:each="hotel : ${hoteles}" th:value="${hotel.id}"
+							th:text="'Nombre: ' + ${hotel.hoteles} + ' / Ciudad: ' + ${hotel.ciudad} + ' / Precio: ' + ${hotel.precio}"></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<div>
+				<!-- Vuelos -->
+				<span>Vuelos disponibles </span>
+				<div>
+					<select name="vuelo" id="dropVuelos" th:field="*{vueloId}"
+						style="width: 30em;">
+						<option selected="true" value="" disabled>Seleccione un
+							vuelo</option>
+						<option th:each="vuelo : ${vuelos}" th:value="${vuelo.idVuelo}"
+							th:text="'Destino: ' + ${vuelo.destination} + ' / Fecha: ' + ${vuelo.time} + ' / Precio: ' + ${vuelo.price}"></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<!-- N field -->
+			<div class="form-group">
+				<label for="n" class="control-label col-xs-2">N Pasajeros </label> <input
+					type="number" class="form-control" id="n" th:field="*{n}"
+					placeholder="Introducir n pasajeros" style="width: 10em;" />
+			</div>
+			<br>
+
+<!-- 			<div class="form-group"> -->
+				<!-- 				<label for="totalPrice" class="control-label col-xs-2">Total -->
+				<!-- 					del viaje </label> <input type="text" class="form-control" id="totalPrice" -->
+				<!-- 					name="totalPrice" th:value="*{vuelo}" style="width: 10em;" readonly /> -->
+				<!-- 					${#math?.sum(hotel.precio, vuelo.price)} -->
+
+<!-- 				<div th:with="result=${hotel?.precio} + ${vuelo?.price}"> -->
+<!-- 					<input type="text" class="form-control" id="totalPrice" -->
+<!-- 						name="totalPrice" th:value="${result}" style="width: 10em;" -->
+<!-- 						readonly /> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			<!--  Submit button -->
+			<div class="form-group">
+				<div class="col-xs-offset-2 col-xs-10">
+					<button type="submit" class="btn btn-primary">Crear</button>
+				</div>
+			</div>
+		</form>
+
+
+		<br> <a th:href="@{/usuarios}">Volver a listado de usuarios</a>
+	</div>
+</body>
+</html>
